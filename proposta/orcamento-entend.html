@@ -1,0 +1,570 @@
+<title>Site e Loja Entend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --paper:#EDEFF7;
+  --sheet:#FFFFFF;
+  --sheet-2:#F6F7FC;
+  --ink:#151A2E;
+  --ink-2:#4A5170;
+  --ink-3:#69708F;
+  --rule:#D6DAEA;
+  --rule-2:#BCC2DA;
+  --accent:#2E3BA6;
+  --accent-2:#5563CC;
+  --accent-wash:#E3E6F8;
+  --marker:#E9F27A;
+  --marker-ink:#23260A;
+  --shadow:0 1px 2px rgba(21,26,46,.05), 0 8px 28px -14px rgba(21,26,46,.22);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --gut:clamp(1.15rem,4vw,2.5rem);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1220;
+    --sheet:#181C2E;
+    --sheet-2:#1F2437;
+    --ink:#E8EAF6;
+    --ink-2:#A6ACCA;
+    --ink-3:#868DAB;
+    --rule:#2A3049;
+    --rule-2:#3B4265;
+    --accent:#96A2FB;
+    --accent-2:#7C89EE;
+    --accent-wash:#232A50;
+    --marker:#D6E163;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -16px rgba(0,0,0,.75);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1220;
+  --sheet:#181C2E;
+  --sheet-2:#1F2437;
+  --ink:#E8EAF6;
+  --ink-2:#A6ACCA;
+  --ink-3:#868DAB;
+  --rule:#2A3049;
+  --rule-2:#3B4265;
+  --accent:#96A2FB;
+  --accent-2:#7C89EE;
+  --accent-wash:#232A50;
+  --marker:#D6E163;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -16px rgba(0,0,0,.75);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  padding:clamp(1rem,3vw,2.75rem) var(--gut) 4rem;
+}
+.doc{max-width:63rem;margin:0 auto}
+
+/* ---------- shared type ---------- */
+h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0;line-height:1.18}
+p{margin:0}
+a{color:var(--accent);text-underline-offset:.18em;text-decoration-thickness:1px}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+strong{font-weight:600;color:var(--ink)}
+.lede{font-size:1.06rem;color:var(--ink-2)}
+.eyebrow{
+  font-family:var(--mono);font-size:.7rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+}
+.mark{background:var(--marker);color:var(--marker-ink);padding:.06em .28em;border-radius:2px;font-weight:500}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ---------- masthead ---------- */
+.mast{
+  background:var(--sheet);border:1px solid var(--rule);border-radius:5px;
+  box-shadow:var(--shadow);padding:clamp(1.5rem,4vw,2.75rem);
+  display:flex;flex-direction:column;gap:1.75rem;
+}
+.mast-top{display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:baseline;justify-content:space-between}
+.mast h1{font-size:clamp(2rem,5.2vw,3.1rem);letter-spacing:-.015em}
+.mast h1 em{font-style:italic;font-weight:400;color:var(--ink-2)}
+.mast-sub{font-size:1.05rem;color:var(--ink-2);max-width:44ch;margin-top:.55rem}
+.ficha{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden;
+}
+.ficha div{background:var(--sheet-2);padding:.7rem .85rem;display:flex;flex-direction:column;gap:.2rem}
+.ficha dt{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.ficha dd{margin:0;font-size:.92rem;font-weight:500;color:var(--ink)}
+@media (min-width:620px){.ficha{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- sections ---------- */
+.sec{
+  display:grid;grid-template-columns:9.5rem minmax(0,1fr);
+  column-gap:2.5rem;row-gap:.9rem;
+  padding-top:3.5rem;
+}
+.sec-rail{padding-top:.42rem}
+.sec-body{display:flex;flex-direction:column;gap:1.15rem;min-width:0}
+.sec-body > h2{font-size:clamp(1.45rem,3.4vw,1.95rem);letter-spacing:-.01em;margin-bottom:.15rem}
+.sec-body > h3{font-size:1.06rem;font-family:var(--sans);font-weight:600;margin-top:.6rem}
+.rule{border:0;border-top:1px solid var(--rule);margin:0}
+@media (max-width:820px){
+  .sec{grid-template-columns:minmax(0,1fr);row-gap:.7rem;padding-top:2.75rem}
+  .sec-rail{padding-top:0}
+}
+
+/* ---------- callout ---------- */
+.callout{
+  background:var(--sheet);border:1px solid var(--rule);border-left:3px solid var(--accent);
+  border-radius:0 4px 4px 0;padding:1.1rem 1.3rem;display:flex;flex-direction:column;gap:.6rem;
+}
+.callout .eyebrow{color:var(--accent)}
+.note{color:var(--ink-3);font-size:.92rem}
+
+/* ---------- lists ---------- */
+ul.ticks{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.5rem}
+ul.ticks li{position:relative;padding-left:1.4rem;color:var(--ink-2)}
+ul.ticks li::before{
+  content:"";position:absolute;left:.15rem;top:.62em;
+  width:.42rem;height:.42rem;border-radius:50%;background:var(--accent-2);
+}
+ul.ticks li strong{color:var(--ink)}
+
+/* ---------- scope blocks ---------- */
+.blocks{display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:5px;overflow:hidden}
+.block{background:var(--sheet);padding:1.35rem clamp(1rem,3vw,1.6rem);display:flex;flex-direction:column;gap:.85rem}
+.block-head{display:flex;align-items:baseline;gap:.75rem;flex-wrap:wrap}
+.block-head .code{font-family:var(--mono);font-size:.78rem;font-weight:600;color:var(--accent)}
+.block-head h3{font-family:var(--serif);font-size:1.28rem;font-weight:600}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto;border:1px solid var(--rule);border-radius:5px;background:var(--sheet)}
+table{width:100%;border-collapse:collapse;font-size:.94rem;min-width:24rem}
+caption{
+  text-align:left;padding:.9rem 1.05rem .1rem;font-family:var(--mono);font-size:.68rem;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+}
+th,td{padding:.72rem 1.05rem;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top}
+thead th{
+  font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);background:var(--sheet-2);
+}
+tbody tr:last-child td{border-bottom:0}
+td.val,th.val{text-align:right;white-space:nowrap;font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:500}
+tr.total td{background:var(--accent-wash);font-weight:600;color:var(--ink);border-bottom:0}
+tr.total td.val{font-size:1.05rem}
+
+/* ---------- gantt ---------- */
+.gantt{display:flex;flex-direction:column;gap:.55rem;background:var(--sheet);border:1px solid var(--rule);border-radius:5px;padding:1.2rem clamp(1rem,3vw,1.5rem)}
+.g-row{display:grid;grid-template-columns:17rem minmax(0,1fr);align-items:center;column-gap:1.35rem;row-gap:.3rem}
+.g-name{display:flex;flex-direction:column;gap:.1rem;font-size:.9rem;line-height:1.35;color:var(--ink)}
+.g-name .wk{font-family:var(--mono);font-size:.74rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.g-track{
+  display:grid;grid-template-columns:repeat(10,1fr);height:1.4rem;align-items:center;
+  background:repeating-linear-gradient(to right,transparent 0,transparent calc(10% - 1px),var(--rule) calc(10% - 1px),var(--rule) 10%);
+}
+.g-bar{height:.62rem;border-radius:4px;background:var(--accent);display:block}
+.g-scale{display:grid;grid-template-columns:17rem minmax(0,1fr);column-gap:1.35rem;align-items:end;padding-bottom:.15rem}
+.g-ticks{display:grid;grid-template-columns:repeat(10,1fr)}
+.g-ticks span{font-family:var(--mono);font-size:.68rem;color:var(--ink-3);text-align:center;font-variant-numeric:tabular-nums}
+.g-scale .eyebrow{align-self:end}
+@media (max-width:760px){
+  .g-row,.g-scale{grid-template-columns:minmax(0,1fr)}
+  .g-scale .eyebrow{margin-bottom:.2rem}
+}
+
+/* ---------- two-step ---------- */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.step{background:var(--sheet);border:1px solid var(--rule);border-radius:5px;padding:1.15rem 1.3rem;display:flex;flex-direction:column;gap:.5rem}
+.step .eyebrow{color:var(--accent)}
+.step .price{font-family:var(--mono);font-size:1.4rem;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.step .when{font-size:.86rem;color:var(--ink-3);font-family:var(--mono)}
+
+/* ---------- close ---------- */
+.close{
+  margin-top:3.5rem;background:var(--sheet);border:1px solid var(--rule);border-radius:5px;
+  box-shadow:var(--shadow);padding:clamp(1.5rem,4vw,2.5rem);display:flex;flex-direction:column;gap:1.4rem;
+}
+.close h2{font-size:1.6rem}
+ol.steps-list{margin:0;padding-left:1.3rem;display:flex;flex-direction:column;gap:.6rem;color:var(--ink-2)}
+ol.steps-list::marker{font-family:var(--mono)}
+.sign{display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;align-items:baseline;padding-top:1.2rem;border-top:1px solid var(--rule)}
+.sign .who{font-family:var(--serif);font-size:1.15rem;font-weight:600}
+.sign .contact{font-family:var(--mono);font-size:.82rem;color:var(--ink-3)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+@media print{
+  :root{--paper:#fff;--sheet:#fff;--sheet-2:#fff;--shadow:none}
+  body{padding:0;font-size:10.5pt;line-height:1.45}
+  .mast,.close,.tw,.gantt,.blocks,.step,.callout{box-shadow:none;break-inside:avoid}
+  .sec{break-inside:avoid;padding-top:1.6rem}
+  .block,.g-row,tr{break-inside:avoid}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+
+<div class="doc">
+
+  <header class="mast">
+    <div class="mast-top">
+      <div>
+        <p class="eyebrow">Proposta comercial · ENT-2026-09</p>
+        <h1>Site e loja virtual <em>da Entend</em></h1>
+        <p class="mast-sub">Site institucional novo e loja própria de livraria e papelaria, desenvolvida sob medida em Node.js.</p>
+      </div>
+    </div>
+    <dl class="ficha">
+      <div><dt>Para</dt><dd>Eugenie Néri — Entend</dd></div>
+      <div><dt>De</dt><dd>[SEU NOME / EMPRESA]</dd></div>
+      <div><dt>Data</dt><dd class="num">09 · 09 · 2026</dd></div>
+      <div><dt>Validade</dt><dd class="num">30 dias</dd></div>
+      <div><dt>Prazo</dt><dd class="num">10 semanas</dd></div>
+      <div><dt>Investimento</dt><dd class="num">R$ 38.000</dd></div>
+    </dl>
+  </header>
+
+  <!-- 1 -->
+  <section class="sec">
+    <div class="sec-rail"><p class="eyebrow">Entendimento</p></div>
+    <div class="sec-body">
+      <h2>Duas frentes num projeto só</h2>
+      <p class="lede">Eugenie, o que você descreveu tem duas metades que se sustentam uma na outra.</p>
+      <ul class="ticks">
+        <li><strong>Renovar a presença institucional.</strong> Cursos, instrutores e marca num site moderno, rápido e que funcione bem no celular.</li>
+        <li><strong>Abrir um canal de venda direta.</strong> Livraria e papelaria em loja própria, vendendo para o público que já conhece e confia na Entend.</li>
+      </ul>
+      <p>A segunda é a que muda o jogo. Hoje a marca gera relacionamento e não gera transação — uma loja bem-feita transforma quem já acompanha os cursos em comprador recorrente, sem depender de marketplace nem de comissão de terceiro.</p>
+      <p>A loja será <strong>desenvolvida sob medida em Node.js com banco de dados próprio</strong>, e não montada sobre tema alugado de plataforma. Isso significa mensalidade de plataforma zero, liberdade total de regra de negócio e código que é da Entend. Em contrapartida, exige um projeto de verdade — e é isso que este documento descreve.</p>
+      <div class="callout">
+        <p class="eyebrow">Ressalva de honestidade</p>
+        <p>Não consegui abrir o entend.com.br enquanto montava esta proposta — bloqueio de rede do ambiente que usei. O escopo abaixo assume construção do zero. Se o site atual tiver conteúdo, integrações ou posicionamento no Google que valham a pena preservar, alguns itens mudam, e é a primeira coisa que reviso com você.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="sec">
+    <div class="sec-rail"><p class="eyebrow">Timing</p></div>
+    <div class="sec-body">
+      <h2>O relógio aponta para dezembro</h2>
+      <p>Duas sazonalidades da Entend caem no mesmo lugar: <strong>papelaria vive de volta às aulas</strong> e <strong>matrícula de curso concentra em janeiro e fevereiro</strong>. Loja que nasce em março perde as duas e espera doze meses pela próxima.</p>
+      <p>Para estar no ar, indexada no Google e pronta para receber tráfego em janeiro, o alvo de lançamento é <span class="mark">início de dezembro de 2026</span>. De hoje até lá são cerca de 12 semanas, e o projeto leva 10. Cabe — com decisão fechada ainda em setembro.</p>
+      <p class="note">Não é pressa de vendedor: é o único motivo pelo qual eu recomendaria começar agora em vez de em janeiro.</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="sec">
+    <div class="sec-rail"><p class="eyebrow">Escopo</p></div>
+    <div class="sec-body">
+      <h2>O que está incluído</h2>
+
+      <div class="blocks">
+        <article class="block">
+          <div class="block-head"><span class="code">01</span><h3>Site institucional</h3></div>
+          <p>Design moderno e responsivo, cinco páginas:</p>
+          <ul class="ticks">
+            <li><strong>Home</strong> — proposta de valor, destaques de cursos e vitrine da loja</li>
+            <li><strong>Quem Somos</strong> — história, missão e diferencial da Entend</li>
+            <li><strong>Instrutores</strong> — perfis individuais, formação e áreas de atuação</li>
+            <li><strong>Produtos / Cursos</strong> — catálogo de cursos, com página própria por curso</li>
+            <li><strong>Contato</strong> — formulário, mapa, WhatsApp e redes</li>
+          </ul>
+          <p class="note">Inclui layout desenhado sob medida (não template), formulário com envio por e-mail e proteção antispam, páginas legais e banner de cookies para conformidade com a LGPD.</p>
+        </article>
+
+        <article class="block">
+          <div class="block-head"><span class="code">02</span><h3>Loja virtual</h3></div>
+          <p>Aplicação própria em Node.js e banco de dados, para até 50 produtos:</p>
+          <ul class="ticks">
+            <li>Vitrine com categorias, destaques e produtos relacionados</li>
+            <li>Busca e filtros por categoria, faixa de preço e disponibilidade</li>
+            <li>Página de produto com galeria, descrição, estoque e variações de cor, tamanho ou formato</li>
+            <li><strong>Ficha específica para livro</strong> — autor, editora, ISBN, ano, edição e número de páginas</li>
+            <li>Carrinho persistente, com atualização de quantidade e cálculo em tempo real</li>
+            <li>Cadastro e login de cliente, com histórico de pedidos e rastreio</li>
+          </ul>
+        </article>
+
+        <article class="block">
+          <div class="block-head"><span class="code">03</span><h3>Checkout e pagamento</h3></div>
+          <ul class="ticks">
+            <li>Checkout em página única, otimizado para celular</li>
+            <li><strong>Pix</strong> com QR Code e confirmação automática</li>
+            <li><strong>Cartão de crédito</strong> com parcelamento</li>
+            <li>Integração via Mercado Pago ou Pagar.me — definimos qual na descoberta</li>
+            <li>Confirmação por webhook: o pedido só avança quando o pagamento é aprovado</li>
+            <li>E-mails automáticos de pedido recebido, pagamento aprovado e pedido enviado</li>
+            <li>Validação de endereço por CEP e checagem de estoque antes de fechar</li>
+          </ul>
+        </article>
+
+        <article class="block">
+          <div class="block-head"><span class="code">04</span><h3>Frete</h3></div>
+          <ul class="ticks">
+            <li>Cálculo por CEP via API dos Correios, ou Melhor Envio conforme a descoberta</li>
+            <li>Múltiplas modalidades, com prazo e valor por opção</li>
+            <li>Regras configuráveis de frete grátis, por valor de pedido ou região</li>
+            <li>Retirada na loja, se houver ponto físico</li>
+          </ul>
+        </article>
+
+        <article class="block">
+          <div class="block-head"><span class="code">05</span><h3>Painel administrativo</h3></div>
+          <p>Área restrita, para a equipe operar sem depender de mim:</p>
+          <ul class="ticks">
+            <li><strong>Produtos</strong> — cadastro, edição, upload de imagens, categorias e variações</li>
+            <li><strong>Estoque</strong> — saldo por produto, baixa automática na venda e alerta de mínimo</li>
+            <li><strong>Pedidos</strong> — lista, busca, detalhe completo e histórico do cliente</li>
+            <li><strong>Entrega</strong> — mudança de status, código de rastreio e notificação automática ao cliente</li>
+            <li><strong>Usuários</strong> — acessos com níveis de permissão</li>
+            <li>Painel inicial com vendas do período, pedidos pendentes e produtos em falta</li>
+          </ul>
+        </article>
+
+        <article class="block">
+          <div class="block-head"><span class="code">06</span><h3>SEO, performance e entrega</h3></div>
+          <ul class="ticks">
+            <li>SEO técnico: títulos, meta descrições, URLs limpas, sitemap e robots</li>
+            <li><strong>Dados estruturados</strong> para produto, curso e organização — é o que faz preço e disponibilidade aparecerem direto no resultado do Google</li>
+            <li>Otimização mobile e de Core Web Vitals: imagens, carregamento e cache</li>
+            <li>Google Analytics 4 e Search Console configurados</li>
+            <li>Redirecionamentos 301 do site atual, para não perder o que já está indexado</li>
+            <li>Testes em aparelhos reais, compras de teste ponta a ponta e publicação com SSL e backup</li>
+            <li>Cadastro dos até 50 produtos iniciais, treinamento gravado e manual do painel</li>
+            <li><strong>30 dias de acompanhamento pós-lançamento inclusos</strong></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="sec">
+    <div class="sec-rail"><p class="eyebrow">Investimento</p></div>
+    <div class="sec-body">
+      <h2>R$ 38.000, em 10 semanas</h2>
+      <p>Aberto por módulo, para você ver exatamente onde o investimento vai.</p>
+      <div class="tw">
+        <table>
+          <caption>Composição do projeto</caption>
+          <thead><tr><th scope="col">Módulo</th><th scope="col" class="val">Valor</th></tr></thead>
+          <tbody>
+            <tr><td>01 · Site institucional — 5 páginas, design e SEO</td><td class="val">R$ 8.500</td></tr>
+            <tr><td>02 · Loja: catálogo, busca e carrinho (até 50 produtos)</td><td class="val">R$ 7.500</td></tr>
+            <tr><td>03 · Checkout e pagamentos — Pix e cartão</td><td class="val">R$ 6.500</td></tr>
+            <tr><td>04 · Cálculo de frete — Correios / API</td><td class="val">R$ 3.000</td></tr>
+            <tr><td>05 · Painel administrativo e gestão de pedidos</td><td class="val">R$ 9.000</td></tr>
+            <tr><td>06 · Testes, publicação, treinamento e acompanhamento</td><td class="val">R$ 3.500</td></tr>
+            <tr class="total"><td>Total</td><td class="val">R$ 38.000</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Se preferir dividir em duas etapas</h3>
+      <p>Os módulos são independentes o suficiente para o site entrar no ar antes da loja. O valor total é o mesmo; a vantagem é presença nova mais cedo e investimento diluído, ao custo de uma semana a mais no total.</p>
+      <div class="steps">
+        <div class="step">
+          <p class="eyebrow">Etapa 1</p>
+          <p class="price">R$ 8.500</p>
+          <p>Site institucional completo, no ar.</p>
+          <p class="when">3 a 4 semanas</p>
+        </div>
+        <div class="step">
+          <p class="eyebrow">Etapa 2</p>
+          <p class="price">R$ 29.500</p>
+          <p>Loja, checkout, frete e painel administrativo.</p>
+          <p class="when">+ 6 a 7 semanas</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="sec">
+    <div class="sec-rail"><p class="eyebrow">Cronograma</p></div>
+    <div class="sec-body">
+      <h2>As 10 semanas</h2>
+      <div class="gantt">
+        <div class="g-scale">
+          <p class="eyebrow">Semana</p>
+          <div class="g-ticks" aria-hidden="true">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+          </div>
+        </div>
+
+        <div class="g-row">
+          <p class="g-name">Descoberta, arquitetura e banco <span class="wk">sem. 1–2</span></p>
+          <div class="g-track"><span class="g-bar" style="grid-column:1/3"></span></div>
+        </div>
+        <div class="g-row">
+          <p class="g-name">Design de interface <span class="wk">sem. 2–4</span></p>
+          <div class="g-track"><span class="g-bar" style="grid-column:2/5"></span></div>
+        </div>
+        <div class="g-row">
+          <p class="g-name">Site institucional <span class="wk">sem. 4–6</span></p>
+          <div class="g-track"><span class="g-bar" style="grid-column:4/7"></span></div>
+        </div>
+        <div class="g-row">
+          <p class="g-name">Loja e painel administrativo <span class="wk">sem. 5–8</span></p>
+          <div class="g-track"><span class="g-bar" style="grid-column:5/9"></span></div>
+        </div>
+        <div class="g-row">
+          <p class="g-name">Checkout, pagamentos e frete <span class="wk">sem. 7–9</span></p>
+          <div class="g-track"><span class="g-bar" style="grid-column:7/10"></span></div>
+        </div>
+        <div class="g-row">
+          <p class="g-name">Testes, cadastro e lançamento <span class="wk">sem. 9–10</span></p>
+          <div class="g-track"><span class="g-bar" style="grid-column:9/11"></span></div>
+        </div>
+      </div>
+      <p class="note">Assinando até o fim de setembro, o lançamento cai no começo de dezembro. Prazos contam da assinatura e dependem de retorno em até 3 dias úteis nas etapas de aprovação.</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="sec">
+    <div class="sec-rail"><p class="eyebrow">Opcionais</p></div>
+    <div class="sec-body">
+      <h2>Fora do escopo inicial</h2>
+      <p>Como conversamos, estes itens ficam de fora por ora. Preços firmes, caso queira incluir agora ou depois:</p>
+      <div class="tw">
+        <table>
+          <caption>Módulos adicionais</caption>
+          <thead><tr><th scope="col">Item</th><th scope="col" class="val">Valor</th></tr></thead>
+          <tbody>
+            <tr><td>Cupons de desconto e promoções</td><td class="val">R$ 2.800</td></tr>
+            <tr><td>Recuperação de carrinho abandonado</td><td class="val">R$ 2.500</td></tr>
+            <tr><td>Blog / área de conteúdo com CMS</td><td class="val">R$ 3.500</td></tr>
+            <tr><td>Integração de NF-e — Bling, Tiny ou Omie</td><td class="val">R$ 4.500</td></tr>
+            <tr><td>Venda e matrícula de cursos online pelo site</td><td class="val">R$ 9.000</td></tr>
+            <tr><td>Programa de fidelidade — pontos ou cashback</td><td class="val">R$ 6.500</td></tr>
+            <tr><td>Marketplace multi-vendedor</td><td class="val">desde R$ 25.000</td></tr>
+            <tr><td>Aplicativo mobile — iOS e Android</td><td class="val">desde R$ 45.000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <p class="eyebrow">Dois destaques</p>
+        <p><strong>Nota fiscal.</strong> Loja virtual que vende produto físico precisa emitir nota. Se a Entend já emite pelo sistema do contador ou por ERP próprio, não há nada a fazer e o custo é zero. Se você quiser que o site emita sozinho a cada venda, é o item de R$ 4.500. Sinalizo agora para não virar surpresa perto do lançamento.</p>
+        <p><strong>Venda de cursos.</strong> É o opcional com melhor retorno na sua situação: o site já vai listar os cursos, e permitir matrícula e pagamento ali mesmo aproveita toda a estrutura de checkout que a loja já terá.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="sec">
+    <div class="sec-rail"><p class="eyebrow">Depois do ar</p></div>
+    <div class="sec-body">
+      <h2>Manutenção mensal</h2>
+      <p>Loja não é obra entregue: é sistema que roda todo dia, com pagamento e estoque em jogo. Os 30 dias seguintes ao lançamento já estão inclusos no projeto — a mensalidade começa depois disso.</p>
+      <div class="tw">
+        <table>
+          <caption>Planos de sustentação</caption>
+          <thead><tr><th scope="col">Plano</th><th scope="col" class="val">Mensal</th><th scope="col">O que inclui</th></tr></thead>
+          <tbody>
+            <tr><td>Essencial</td><td class="val">R$ 1.200</td><td>Hospedagem gerenciada, backups diários, monitoramento, atualizações de segurança, correção de defeitos e até 6h/mês de ajustes</td></tr>
+            <tr><td>Crescimento</td><td class="val">R$ 2.900</td><td>Tudo do Essencial, mais até 18h/mês de melhorias, acompanhamento de conversão e relatório mensal</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Não é obrigatória. Mas sistema com pagamento integrado rodando sem ninguém olhando é risco real.</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="sec">
+    <div class="sec-rail"><p class="eyebrow">Terceiros</p></div>
+    <div class="sec-body">
+      <h2>Custos que não passam por mim</h2>
+      <p>Pagos pela Entend direto ao fornecedor e em nome da Entend. Não estão embutidos nos valores acima.</p>
+      <div class="tw">
+        <table>
+          <caption>Estimativa de mercado — setembro de 2026</caption>
+          <thead><tr><th scope="col">Item</th><th scope="col" class="val">Faixa</th></tr></thead>
+          <tbody>
+            <tr><td>Domínio (registro.br)</td><td class="val">~R$ 40/ano</td></tr>
+            <tr><td>Hospedagem e banco de dados</td><td class="val">R$ 80–350/mês</td></tr>
+            <tr><td>Certificado SSL</td><td class="val">R$ 0</td></tr>
+            <tr><td>Mercado Pago / Pagar.me — Pix</td><td class="val">~0,99%</td></tr>
+            <tr><td>Mercado Pago / Pagar.me — cartão</td><td class="val">~3,5–5%</td></tr>
+            <tr><td>Envio de e-mails transacionais</td><td class="val">R$ 0–120/mês</td></tr>
+            <tr><td>Frete</td><td class="val">cobrado do cliente</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Percentuais de cartão variam conforme o prazo de recebimento escolhido. Fecho os fornecedores com você na descoberta.</p>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="sec">
+    <div class="sec-rail"><p class="eyebrow">Condições</p></div>
+    <div class="sec-body">
+      <h2>Como funciona</h2>
+      <ul class="ticks">
+        <li><strong>Pagamento:</strong> 40% na assinatura, 30% na aprovação do design, 30% na entrega. Parcelamento em até 5 vezes disponível.</li>
+        <li><strong>2 rodadas de revisão por etapa.</strong> Rodadas adicionais a R$ 180/h.</li>
+        <li><strong>Garantia de 90 dias</strong> para correção de defeitos após o lançamento.</li>
+        <li><strong>Código-fonte, domínio e todas as contas em nome da Entend.</strong> Você não fica presa a mim nem a ninguém — é a principal vantagem de não usar plataforma alugada.</li>
+        <li><strong>Validade desta proposta:</strong> 30 dias, até 09/10/2026.</li>
+      </ul>
+
+      <h3>Também fora do escopo</h3>
+      <p class="note">Produção fotográfica dos produtos (posso orçar à parte ou indicar quem faça) · redação de textos institucionais e descrições além dos fornecidos · verba e gestão de mídia paga · operação logística, embalagem e atendimento · traduções e outros idiomas.</p>
+
+      <h3>Premissas</h3>
+      <ul class="ticks">
+        <li>O entend.com.br não pôde ser auditado antes desta proposta. Havendo conteúdo, integrações ou histórico de SEO relevantes, revemos os números na descoberta.</li>
+        <li>Catálogo de até 50 produtos. Acima disso, o cadastro adicional é orçado à parte.</li>
+        <li>Textos, fotos e dados dos instrutores e dos cursos são fornecidos pela Entend.</li>
+        <li>CNPJ ativo apto a receber pagamento online e conta habilitada no gateway escolhido.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="sec">
+    <div class="sec-rail"><p class="eyebrow">Descoberta</p></div>
+    <div class="sec-body">
+      <h2>O que ainda preciso saber</h2>
+      <p>Nenhuma dessas respostas muda o valor do projeto — todas mudam o quanto ele vai ficar bom.</p>
+      <ol class="steps-list">
+        <li>Quantos produtos você quer no ar no lançamento, e quanto é livro e quanto é papelaria?</li>
+        <li>As fotos dos produtos já existem? Em que qualidade?</li>
+        <li>Quantos instrutores entram na página, e você já tem foto e bio de cada um?</li>
+        <li>Quantos cursos vão para o site? Cada um precisa de página própria?</li>
+        <li>Tem preferência entre Mercado Pago e Pagar.me? Já tem conta em algum?</li>
+        <li>A emissão de nota fiscal já funciona hoje de alguma forma?</li>
+        <li>Tem loja física? Faz sentido oferecer retirada no local?</li>
+        <li>Existe manual de marca e identidade visual, ou criamos junto?</li>
+        <li>Quem da equipe vai operar o painel no dia a dia?</li>
+        <li>O lançamento em dezembro faz sentido para você?</li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="close">
+    <div>
+      <p class="eyebrow">Próximos passos</p>
+      <h2>Começa com meia hora de conversa</h2>
+    </div>
+    <ol class="steps-list">
+      <li><strong>Uma conversa de 30 minutos</strong> esta semana, para eu ver a operação e fechar as dúvidas acima.</li>
+      <li>Assinatura e início.</li>
+      <li><strong>Primeira entrega visual em duas semanas</strong> — você vê o site desenhado antes de qualquer linha de código de tela.</li>
+    </ol>
+    <div class="sign">
+      <span class="who">[SEU NOME / EMPRESA]</span>
+      <span class="contact">[SEU E-MAIL] · [SEU TELEFONE] · [CNPJ]</span>
+    </div>
+  </div>
+
+</div>
