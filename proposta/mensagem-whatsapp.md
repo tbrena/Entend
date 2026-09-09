@@ -1,5 +1,9 @@
 # Resposta pronta para o WhatsApp
 
+> **Antes de enviar:** o link da proposta nasce privado. Abra a página, use o
+> menu de compartilhamento e libere o acesso — senão a Eugenie recebe um erro.
+> E preencha os marcadores de nome, e-mail, telefone e CNPJ no documento.
+
 Curta de propósito. Orçamento longo em bloco de WhatsApp não é lido — o objetivo
 aqui é entregar a proposta, dar um motivo concreto para responder rápido e marcar
 a conversa.
@@ -10,7 +14,7 @@ a conversa.
 
 > Bom dia, Eugenie! Tudo ótimo, e você? 😊
 >
-> Montei o orçamento — segue aqui: [LINK]
+> Montei o orçamento — segue aqui: https://claude.ai/code/artifact/29e2fca1-9e7e-4883-9002-19952722671b
 >
 > Resumo: **R$ 38.000, em 10 semanas**, com site institucional novo (Home, Quem
 > Somos, Instrutores, Produtos/Cursos e Contato) e a loja virtual própria de

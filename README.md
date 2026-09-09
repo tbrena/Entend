@@ -27,6 +27,14 @@ Confira também os valores dos módulos e o valor da hora avulsa
 **Resumo do orçamento:** R$ 38.000, em 10 semanas, aberto em 6 módulos. Opção em
 duas etapas: R$ 8.500 (site institucional) + R$ 29.500 (loja).
 
+## Link publicado
+
+https://claude.ai/code/artifact/29e2fca1-9e7e-4883-9002-19952722671b
+
+Nasce **privado** — libere o acesso pelo menu de compartilhamento da própria
+página antes de mandar para a cliente. Para atualizar depois de editar o HTML,
+basta republicar o mesmo arquivo: a URL não muda.
+
 ## Ressalva de apuração
 
 `www.entend.com.br` não pôde ser acessado durante a preparação desta proposta
